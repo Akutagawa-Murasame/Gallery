@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="icon" th:href="@{/static/favicon.ico}">
+</head>
+<body>
+<h1>Please Log In</h1>
+<div th:if="${param.error}">
+    用户名或密码不正确
+</div>
+<div th:if="${param.logout}">
+    您已登出
+</div>
+<form th:action="@{/login}" method="post">
+    <label><input type="text" name="username"></label>
+    <label><input type="password" name="password"></label>
+    <input type="submit" value="login">
+</form>
+</body>
+</html>
