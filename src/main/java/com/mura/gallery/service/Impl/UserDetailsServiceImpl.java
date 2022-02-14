@@ -1,4 +1,4 @@
-package com.mura.gallery.service;
+package com.mura.gallery.service.Impl;
 
 import com.mura.gallery.entity.RegisterStatus;
 import com.mura.gallery.entity.Role;
