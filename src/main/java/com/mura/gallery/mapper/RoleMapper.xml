@@ -6,7 +6,7 @@
     <select id="selectByUserId" resultType="com.mura.gallery.entity.Role">
         select user_id, role_name
         from role
-        where user_id = #{id};
+        where user_id = #{userId};
     </select>
     <insert id="insertOne">
         insert into role (user_id, role_name)

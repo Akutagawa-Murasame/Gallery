@@ -1,5 +1,6 @@
 package com.mura.gallery.config;
 
+import com.mura.gallery.service.Impl.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,17 +12,28 @@ import javax.annotation.Resource;
 
 /**
  * @author Akutagawa Murasame
+ * 登录验证设置，主页和登录页不需要登录就可以访问，静态资源不需要登录就可以访问
  */
 @Configuration
 public class LoginConfig extends WebSecurityConfigurerAdapter {
-    @Resource
+    @Resource(type = UserDetailsServiceImpl.class)
     UserDetailsService userDetailsService;
 
+    /**
+     * 这个函数是spring security用于设置密码校验机制的
+     * @param auth 通过这个对象设置参数
+     * @throws Exception 意想不到的错误
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
 
+    /**
+     * 设置拦截逻辑
+     * @param http 通过这个对象设置参数
+     * @throws Exception 意想不到的错误
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 配置认证
@@ -47,9 +59,13 @@ public class LoginConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
     }
 
+    /**
+     * 设置放行逻辑
+     * @param web 通过这个对象设置参数
+     */
     @Override
     public void configure(WebSecurity web) {
-//        跳过验证的资源
+//        跳过验证的资源，直接忽略
         web.ignoring().antMatchers("/static/**", "/");
     }
 }

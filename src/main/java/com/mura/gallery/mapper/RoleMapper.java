@@ -7,10 +7,22 @@ import java.util.List;
 
 /**
  * @author Akutagawa Murasame
+ * 角色查询映射
  */
 @Mapper
 public interface RoleMapper {
-    List<Role> selectByUserId(Integer id);
+    /**
+     * 根据Id查询角色
+     * @param userId userId
+     * @return 角色链表
+     */
+    List<Role> selectByUserId(Integer userId);
 
+    /**
+     * 插入一个角色
+     * @param userId userId
+     * @param roleName roleName
+     * @return 返回1插入成功，0插入失败
+     */
     int insertOne(int userId, String roleName);
 }
