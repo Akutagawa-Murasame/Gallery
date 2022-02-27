@@ -13,4 +13,9 @@ public interface UserDetailService {
      * @return UserDetail对象
      */
     UserDetail selectById(Integer userId);
+
+    /**
+     * 至少插入一列，一个字段（至少插入用户头像）
+     */
+    int insertAtLeastOneColumn(UserDetail userDetail);
 }

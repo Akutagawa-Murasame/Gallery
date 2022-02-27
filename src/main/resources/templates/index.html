@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>首页</title>
+    <title>index</title>
     <link rel="icon" th:href="@{/static/favicon.ico}">
     <link rel="stylesheet" th:href="@{/static/css/common.css}">
     <link rel="stylesheet" th:href="@{/static/css/index.css}">
@@ -11,7 +11,7 @@
 <div class="center">
     <div class="home">
         <div class="home-box">
-            <img th:if="${user}" th:src="@{/static/img/user/${user.getUsername()}.png}">
+            <img th:if="${user}" th:src="@{/static/img/user/${user.getUsername()}}">
             <div th:if="${user}" th:text="${user.getUsername()}"></div>
             <a th:if="${user} eq null" th:href="@{/sign_in}">sign in</a>
             <a th:if="${user}" th:href="@{/home}">home</a>

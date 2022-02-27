@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 a {
   text-decoration: none;
@@ -9,7 +10,11 @@ a {
 list {
   list-style: none;
 }
-input[type="input"] {
+input {
+  border: 0.125rem #bdecda solid;
+}
+input:focus {
+  border: 0.2rem salmon solid;
   outline: none;
 }
 .center {

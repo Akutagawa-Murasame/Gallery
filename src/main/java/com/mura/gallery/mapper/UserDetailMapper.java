@@ -15,4 +15,11 @@ public interface UserDetailMapper {
      * @return 用户详细信息对象
      */
     UserDetail selectById(Integer userId);
+
+    /**
+     * 至少插入一列，一个字段（至少插入用户头像）
+     * @param userDetail 用户详细信息对象
+     * @return 返回1则成功，返回0则失败
+     */
+    int insertAtLeastOneColumn(UserDetail userDetail);
 }

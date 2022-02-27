@@ -1,0 +1,5 @@
+#1 Mybatis报错找不到绑定的方法
+解决：将xml文件移到了resources下
+
+#2 insertOne方法的报错userId找不到
+解决：只有一个参数的时候, @Param可加可不加, 而两个及以上的话, 必须要加

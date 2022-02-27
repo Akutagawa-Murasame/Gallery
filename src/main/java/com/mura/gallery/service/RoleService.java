@@ -1,17 +1,14 @@
-package com.mura.gallery.mapper;
+package com.mura.gallery.service;
 
 import com.mura.gallery.entity.Role;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
  * @author Akutagawa Murasame
- * 角色查询映射
+ * 对于Role的操作
  */
-@Mapper
-public interface RoleMapper {
+public interface RoleService {
     /**
      * 根据Id查询角色
      * @param userId userId
@@ -25,5 +22,5 @@ public interface RoleMapper {
      * @param roleName roleName
      * @return 返回1插入成功，0插入失败
      */
-    int insertOne(@Param("userId") Integer userId, @Param("roleName") String roleName);
+    int insertOne(Integer userId, String roleName);
 }

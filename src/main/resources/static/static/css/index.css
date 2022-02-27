@@ -5,3 +5,18 @@
   width: 12.5rem;
   background-color: #65ca5c;
 }
+.home .home-box {
+  height: 3.125rem;
+  line-height: 3.125rem;
+  text-align: center;
+  display: flex;
+}
+.home .home-box img {
+  flex: 1;
+}
+.home .home-box div {
+  flex: 3;
+}
+.home .home-box a {
+  flex: 2;
+}

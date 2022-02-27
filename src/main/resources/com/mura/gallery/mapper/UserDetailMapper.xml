@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mura.gallery.mapper.UserDetailMapper">
+    <select id="selectById" resultType="com.mura.gallery.entity.UserDetail">
+        select *
+        from user_detail
+        where user_id = #{userId};
+    </select>
+
+    <insert id="insertAtLeastOneColumn">
+        insert into user_detail(
+        user_id,
+        <if test="trueName != null">
+            true_name,
+        </if>
+        <if test="location != null">
+            location,
+        </if>
+        <if test="email != null">
+            email,
+        </if>
+        avatar_path)
+        values(
+        #{userId},
+        <if test="trueName != null">
+            #{trueName},
+        </if>
+        <if test="location != null">
+            #{location},
+        </if>
+        <if test="email != null">
+            #{email},
+        </if>
+        #{avatarPath}
+        );
+    </insert>
+</mapper>

@@ -50,6 +50,8 @@ public class LoginConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 // 匹配 / 控制器  permitAll() 不需要认证就可以访问，登录页不需要认证
                 .antMatchers("/sign_in").permitAll()
+                .antMatchers("/register").permitAll()
+                .antMatchers("/submit_register").permitAll()
 //                设置哪些路径需要权限
                 .antMatchers("/**").hasAnyAuthority("member", "super")
                 // anyRequest() 所有请求   authenticated() 登陆了才能访问
@@ -66,6 +68,6 @@ public class LoginConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
 //        跳过验证的资源，直接忽略
-        web.ignoring().antMatchers("/static/**", "/");
+        web.ignoring().antMatchers("/static/**", "/", "/public/**");
     }
 }

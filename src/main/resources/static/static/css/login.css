@@ -1,0 +1,45 @@
+.register {
+  float: right;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  width: 5rem;
+  background-color: #0099ff;
+}
+h1,
+form,
+div {
+  margin: 0 auto;
+  text-align: center;
+}
+form input {
+  background-color: aliceblue;
+}
+form input[type="text"] {
+  width: 18.75rem;
+  height: 2rem;
+  margin: 1.875rem 0;
+}
+form input[type="password"] {
+  width: 18.75rem;
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+form input[type="submit"] {
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  width: 5rem;
+  background-color: #65ca5c;
+}
+form input[type="file"] {
+  width: 18.75rem;
+  height: 2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+form input[type="email"] {
+  width: 18.75rem;
+  height: 2rem;
+  margin-bottom: 1rem;
+}

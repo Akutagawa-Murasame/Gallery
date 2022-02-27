@@ -2,21 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>登录</title>
+    <title>login</title>
     <link rel="icon" th:href="@{/static/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/static/css/common.css}">
+    <link rel="stylesheet" th:href="@{/static/css/login.css}">
 </head>
 <body>
-<h1>Please Log In</h1>
-<div th:if="${param.error}">
-    用户名或密码不正确
+<div class="center">
+    <h1>Please Log In</h1>
+    <div style="color: red" th:if="${param.error}">
+        用户名或密码不正确
+    </div>
+    <div style="color: red" th:if="${param.logout}">
+        您已登出
+    </div>
+    <form th:action="@{/login}" method="post">
+        <p><label><input type="text" name="username" placeholder="username"></label></p>
+        <p><label><input type="password" name="password" placeholder="password"></label></p>
+        <p><input type="submit" value="login"></p>
+    </form>
+    <hr>
+    <a class="register" th:href="@{/register}">or register</a>
 </div>
-<div th:if="${param.logout}">
-    您已登出
-</div>
-<form th:action="@{/login}" method="post">
-    <label><input type="text" name="username"></label>
-    <label><input type="password" name="password"></label>
-    <input type="submit" value="login">
-</form>
 </body>
 </html>

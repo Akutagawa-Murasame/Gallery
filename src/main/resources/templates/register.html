@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <link rel="stylesheet" th:href="@{/static/css/common.css}">
+    <link rel="stylesheet" th:href="@{/static/css/login.css}">
+</head>
+<body>
+<div class="center">
+<!--    <h1 th:utext="${Tom.gender}">Hello</h1>-->
+<!--    <h1 th:utext="${req}">Hello</h1>-->
+
+<!--    <h1 th:utext="${#request.getAttribute('req')}"></h1>-->
+<!--    <h1 th:utext="${#httpServletRequest.getAttribute('req')}"></h1>-->
+
+
+<!--    &lt;!&ndash;无法得到<h1 th:utext="${session.getAttribute('ses')}"></h1>&ndash;&gt;-->
+<!--    <h1 th:utext="${session.ses}"></h1>-->
+<!--    <h1 th:text="${#request.getSession().getAttribute('ses')}"></h1>-->
+<!--    <h1 th:text="${#session.getAttribute('ses')}"></h1>-->
+<!--    <h1 th:text="${#httpSession.getAttribute('ses')}"></h1>-->
+
+
+<!--    <h1 th:utext="${#request.getServletContext().getAttribute('app')}"></h1>-->
+<!--    <h1 th:utext="${#servletContext.getAttribute('app')}"></h1>-->
+<!--    ————————————————-->
+<!--    版权声明：本文为CSDN博主「cgl_dong」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。-->
+<!--    原文链接：https://blog.csdn.net/weixin_43688691/article/details/99069150-->
+
+
+    <h1>Please Log In</h1>
+    <form th:action="@{/submit_register}" method="post" enctype="multipart/form-data">
+        <div style="color: red" th:text="${noneAvatar}"></div>
+        <p>
+            upload your avatar<br>
+            <input type="file" name="avatar" accept="image/*">
+        </p>
+        <div style="color: red" th:text="${notCorrect}"></div>
+        <p><label><input type="text" name="username" placeholder="username:8-20(Chinese or English or number)"></label></p>
+        <p><label><input type="password" name="password" placeholder="password:7-20(English . _ ? !)"></label></p>
+        <hr>
+        <h2>detail</h2>
+        <p><label><input type="text" name="trueName" placeholder="real name"></label></p>
+        <p><label><input type="text" name="location" placeholder="location"></label></p>
+        <p><label><input type="email" name="email" placeholder="email"></label></p>
+        <p><input type="submit" value="submit"></p>
+    </form>
+</div>
+</body>
+</html>

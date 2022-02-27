@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 a {
@@ -12,7 +13,12 @@ list {
     list-style: none;
 }
 
-input[type="input"] {
+input {
+    border: .125rem rgb(189, 236, 218) solid;
+}
+
+input:focus {
+    border:.2rem salmon solid;
     outline: none;
 }
 

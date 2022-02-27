@@ -21,6 +21,16 @@ public class User implements UserDetails {
     private List<Role> roles;
     private Boolean enabled;
 
+    /**
+     * 传过来的参数一般只有用户名和密码，所以定义这个构造函数
+     */
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User() {}
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 //        实际上，这个项目的一个user只对应一个role
