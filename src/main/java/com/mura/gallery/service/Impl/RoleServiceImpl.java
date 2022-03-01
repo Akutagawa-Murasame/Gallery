@@ -6,7 +6,6 @@ import com.mura.gallery.service.RoleService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author Akutagawa Murasame
@@ -20,10 +19,10 @@ public class RoleServiceImpl implements RoleService {
     /**
      * 根据Id查询角色
      * @param userId userId
-     * @return 角色链表
+     * @return 角色信息
      */
     @Override
-    public List<Role> selectByUserId(Integer userId) {
+    public Role selectByUserId(Integer userId) {
         if (userId == null) {
             return null;
         }

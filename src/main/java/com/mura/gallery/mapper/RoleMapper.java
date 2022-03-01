@@ -17,7 +17,7 @@ public interface RoleMapper {
      * @param userId userId
      * @return 角色链表
      */
-    List<Role> selectByUserId(Integer userId);
+    Role selectByUserId(Integer userId);
 
     /**
      * 插入一个角色

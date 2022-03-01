@@ -3,6 +3,9 @@ package com.mura.gallery.controller;
 import com.mura.gallery.entity.RegisterStatus;
 import com.mura.gallery.entity.User;
 import com.mura.gallery.entity.UserDetail;
+import com.mura.gallery.exception.UsernameNotFixedWithPasswordException;
+import com.mura.gallery.exception.UsernameNotFoundException;
+import com.mura.gallery.security.UserConfigure;
 import com.mura.gallery.service.UserService;
 import com.mura.gallery.util.ImageUtil;
 import com.mura.gallery.util.UserUtil;
@@ -16,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -28,6 +32,9 @@ public class PageController {
     @Resource(type = UserService.class)
     UserService userService;
 
+    @Resource(type = UserConfigure.class)
+    UserConfigure userConfigure;
+
     /**
      * 登录页
      * @return 登陆页视图
@@ -38,19 +45,38 @@ public class PageController {
     }
 
     /**
+     * 登录提交验证url
+     * @return 验证通过则将用户信息加入到session，否则回到登录页并显示用户名或密码错误
+     */
+    @PostMapping("/login")
+    public String login(@RequestParam("username") String username,
+                        @RequestParam("password") String password,
+                        HttpServletRequest request) {
+//        校验用户名和密码
+        User user;
+        try {
+            user = userConfigure.checkUser(username, password);
+        } catch (UsernameNotFoundException | UsernameNotFixedWithPasswordException e) {
+            request.setAttribute("error", e.getMessage());
+
+            return "forward:/sign_in";
+        }
+
+//        移除此前已经设置的警告，因为用户已经成功登录
+        request.removeAttribute("error");
+
+//        将用户的信息写入session，以便于在多个页面共享
+        request.getSession().setAttribute("user", user);
+
+        return "index";
+    }
+
+    /**
      * 跳转到主页，如果登陆了就将用户信息显示在主页
-     * @return 带有用户信息的ModelAndView
      */
     @RequestMapping("/")
-    public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView("index");
-
-        User user = UserUtil.getCurrentUser();
-
-//        principal为null时，页面获取的user也为null
-        modelAndView.addObject("user", user);
-
-        return modelAndView;
+    public String index() {
+        return "index";
     }
 
     /**
@@ -123,7 +149,7 @@ public class PageController {
         switch (status) {
             case REGISTRY_SUCCESS: {
 //                将用户名密码转发到登录视图，然后自动登录到主页
-                view = "forward:/login";
+                view = "sign_in";
 
                 break;
             }

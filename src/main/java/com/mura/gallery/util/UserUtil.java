@@ -1,10 +1,10 @@
 package com.mura.gallery.util;
 
 import com.mura.gallery.entity.User;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
-import java.security.Principal;
+import javax.servlet.http.HttpSession;
 import java.util.regex.Pattern;
 
 /**
@@ -23,28 +23,19 @@ public class UserUtil {
     public static String passwordPattern = "^[a-zA-Z0-9._?!]{7,20}$";
 
     /**
-     * 获取当前用户
-     * @return User对象
-     */
-    public static User getCurrentUser() {
-        SecurityContext context = SecurityContextHolder.getContext();
-
-//        如果用户没有登录，则此函数返回null
-        Principal principal = context.getAuthentication();
-
-        User user = null;
-
-        if (principal != null) {
-            user = (User) principal;
-        }
-
-        return user;
-    }
-
-    /**
      * 用户名密码是否规则校验
      */
     public static boolean whetherCorrect(String username, String password) {
         return Pattern.matches(usernamePattern, username) && Pattern.matches(passwordPattern, password);
+    }
+
+    /**
+     * 获取当前登录的用户
+     * @return 当前登录的用户对象，没有登录则返回null
+     */
+    public static User getCurrentUser() {
+        HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
+
+        return (User)session.getAttribute("user");
     }
 }

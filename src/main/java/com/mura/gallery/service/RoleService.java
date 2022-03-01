@@ -12,9 +12,9 @@ public interface RoleService {
     /**
      * 根据Id查询角色
      * @param userId userId
-     * @return 角色链表
+     * @return 用户角色
      */
-    List<Role> selectByUserId(Integer userId);
+    Role selectByUserId(Integer userId);
 
     /**
      * 插入一个角色

@@ -11,10 +11,10 @@
 <div class="center">
     <div class="home">
         <div class="home-box">
-            <img th:if="${user}" th:src="@{/static/img/user/${user.getUsername()}}">
-            <div th:if="${user}" th:text="${user.getUsername()}"></div>
-            <a th:if="${user} eq null" th:href="@{/sign_in}">sign in</a>
-            <a th:if="${user}" th:href="@{/home}">home</a>
+            <img th:if="${session.user}" th:src="@{/static/img/user/${session.user.getUsername()}}">
+            <div th:if="${session.user}" th:text="${session.user.getUsername()}"></div>
+            <a th:if="${session.user} eq null" th:href="@{/sign_in}">sign in</a>
+            <a th:if="${session.user}" th:href="@{/home}">home</a>
         </div>
     </div>
 </div>
