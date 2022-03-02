@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
 //        没成功则回滚，手动调用回滚，便于返回RegisterStatus
         try {
             if (!(userInsertResult == 1 && roleInsertResult == 1 && userDetailInsertResult == 1)) {
-                throw new RegistrationFailedException("数据库访问错误");
+                throw new RegistrationFailedException("database access error");
             }
         } catch (RegistrationFailedException e) {
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();

@@ -22,7 +22,7 @@ public class ImageUtil {
      * 根据上传的图片文件夹名称，选择将文件上传到哪里
      * @param file 图片，包含图片文件的所有属性和内容
      * @param parentDirectoryName 图片的父文件夹名，可能是用户头像avatar或用户上传图片gallery
-     * @return 随机生成的文件名，上传失败则为null
+     * @return 存储的文件路径，上传失败则为null
      */
     public static String upload(MultipartFile file, String parentDirectoryName) throws IOException {
         String fileName = file.getOriginalFilename();
@@ -53,6 +53,6 @@ public class ImageUtil {
         }
 
 //        如果文件两次都没有创建成功，就返回null，文件存在也会返回null
-        return (FileUtil.makeDirectoryOrFile(file, fileName, parentDirectoryName) || FileUtil.makeDirectoryOrFile(file, fileName, parentDirectoryName)) ? fileName : null;
+        return (FileUtil.makeDirectoryOrFile(file, fileName, parentDirectoryName) || FileUtil.makeDirectoryOrFile(file, fileName, parentDirectoryName)) ? (parentDirectoryName + File.separator + fileName) : null;
     }
 }

@@ -8,6 +8,6 @@ import lombok.Data;
  */
 @Data
 public class Role {
-    private String userId;
+    private Integer userId;
     private String roleName;
 }

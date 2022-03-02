@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author Akutagawa Murasame
@@ -37,13 +36,13 @@ public class UserConfigure {
         User user = userMapper.selectByUsername(username);
 
         if (null == user) {
-            throw new UsernameNotFoundException("用户名不存在");
+            throw new UsernameNotFoundException("username is not exists");
         }
 
 //        由于散列是非对称的，因此将传入的密码散列后与数据库中的散列密码对比验证
 //        MD5Encoder加密不足16个字节会返回0，所以要填充到16个字节
         if (!user.getPassword().equals(MD5Encoder.encode(Arrays.copyOf(password.getBytes(StandardCharsets.UTF_8), 16)))) {
-            throw new UsernameNotFixedWithPasswordException("用户名与密码不相符");
+            throw new UsernameNotFixedWithPasswordException("username is not fixed with password");
         }
 
 //        查询用户的角色，不同的角色访问的内容不同

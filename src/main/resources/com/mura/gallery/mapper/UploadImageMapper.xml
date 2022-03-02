@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mura.gallery.mapper.UploadImageMapper">
+
+    <insert id="insertOne">
+        insert into upload_image(user_id, upload_date, image_path)
+        values(#{userId}, #{uploadDate}, #{imagePath});
+    </insert>
+</mapper>

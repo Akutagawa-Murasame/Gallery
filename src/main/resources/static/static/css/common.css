@@ -49,3 +49,17 @@ input:focus {
 .home .home-box a {
   flex: 2;
 }
+.back {
+  position: absolute;
+  top: 0;
+  left: 3rem;
+  height: 3.125rem;
+  width: 12.5rem;
+  background-color: skyblue;
+}
+.back .back-box {
+  display: inline-block;
+  height: 3.125rem;
+  line-height: 3.125rem;
+  text-align: center;
+}

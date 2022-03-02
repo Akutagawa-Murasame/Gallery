@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>register</title>
+    <link rel="icon" th:href="@{/static/favicon.ico}">
     <link rel="stylesheet" th:href="@{/static/css/common.css}">
     <link rel="stylesheet" th:href="@{/static/css/login.css}">
 </head>
@@ -46,6 +47,9 @@
         <p><label><input type="email" name="email" placeholder="email"></label></p>
         <p><input type="submit" value="submit"></p>
     </form>
+</div>
+<div class="back">
+    <a class="back-box" th:href="@{/sign_in}">login</a>
 </div>
 </body>
 </html>

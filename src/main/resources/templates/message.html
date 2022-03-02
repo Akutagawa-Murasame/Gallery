@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>message</title>
+    <link rel="icon" th:href="@{/static/favicon.ico}">
+</head>
+<body>
+<div class="back">
+    <a class="back-box" th:href="@{/sign_in}">back</a>
+</div>
+<hr>
+<h1 style="text-align: center" th:text="${message}"></h1>
+</body>
+</html>
