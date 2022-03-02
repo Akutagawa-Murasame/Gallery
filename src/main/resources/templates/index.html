@@ -11,12 +11,14 @@
 <div class="center">
     <div class="home">
         <div class="home-box">
-            <img th:if="${session.user}" th:src="@{/static/img/user/${session.user.getUsername()}}">
             <div th:if="${session.user}" th:text="${session.user.getUsername()}"></div>
             <a th:if="${session.user} eq null" th:href="@{/sign_in}">sign in</a>
             <a th:if="${session.user}" th:href="@{/home}">home</a>
         </div>
     </div>
+</div>
+<div class="upload-box">
+    <a th:href="@{/upload}">upload picture</a>
 </div>
 </body>
 </html>

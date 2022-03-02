@@ -1,22 +1,9 @@
-.home {
-  position: absolute;
-  right: 0;
-  height: 3.125rem;
-  width: 12.5rem;
-  background-color: #65ca5c;
-}
-.home .home-box {
-  height: 3.125rem;
-  line-height: 3.125rem;
-  text-align: center;
-  display: flex;
-}
-.home .home-box img {
-  flex: 1;
-}
-.home .home-box div {
-  flex: 3;
-}
-.home .home-box a {
-  flex: 2;
+.upload-box {
+  position: fixed;
+  right: 0.625rem;
+  bottom: 1.875rem;
+  width: 3.25rem;
+  height: 3.25rem;
+  line-height: 3.25rem;
+  background-color: salmon;
 }

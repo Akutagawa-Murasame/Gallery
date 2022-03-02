@@ -1,7 +1,15 @@
+html {
+  font-size: 20px;
+}
+@font-face {
+  font-family: 'Popincourt';
+  src: url('../font/Popincourt1981Hi.ttf') format('truetype');
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Popincourt, serif;
 }
 a {
   text-decoration: none;
@@ -21,4 +29,23 @@ input:focus {
   position: relative;
   width: 60%;
   margin: 0 auto;
+}
+.home {
+  position: absolute;
+  right: 0;
+  height: 3.125rem;
+  width: 12.5rem;
+  background-color: #65ca5c;
+}
+.home .home-box {
+  height: 3.125rem;
+  line-height: 3.125rem;
+  text-align: center;
+  display: flex;
+}
+.home .home-box div {
+  flex: 3;
+}
+.home .home-box a {
+  flex: 2;
 }
