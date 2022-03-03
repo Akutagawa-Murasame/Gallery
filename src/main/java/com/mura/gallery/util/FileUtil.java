@@ -25,7 +25,8 @@ public class FileUtil {
 
 //        文件不存在就创建文件，否则根据文件上传是否成功返回
         if (!file.exists()) {
-            file.getParentFile().mkdir();
+//            Java File类 mkdir 不能创建多层目录，如果是多层，可以调mkdirs
+            new File(parentDirectoryName).mkdirs();
 
             fileStream.transferTo(new File(parentDirectoryName + File.separator + fileOrDirectoryName).getAbsoluteFile());
 
@@ -45,7 +46,7 @@ public class FileUtil {
         int suffixIndex = originFileName.lastIndexOf(".");
 
         if (suffixIndex == -1) {
-            throw new NotTheFileException("不是一个文件");
+            throw new NotTheFileException("not a file");
         }
 
         String suffix = originFileName.substring(suffixIndex);
@@ -54,7 +55,7 @@ public class FileUtil {
         if (DOT_JPG.equals(suffix) || DOT_PNG.equals(suffix)) {
             newFileName += suffix;
         } else {
-            throw new NotThePictureException("不是一个图片");
+            throw new NotThePictureException("not a picture");
         }
 
         return newFileName;

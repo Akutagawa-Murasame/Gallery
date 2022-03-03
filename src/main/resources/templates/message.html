@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <title>message</title>
     <link rel="icon" th:href="@{/static/favicon.ico}">
+    <link rel="icon" th:href="@{/static/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/static/css/common.css}">
 </head>
 <body>
 <div class="back">
-    <a class="back-box" th:href="@{/sign_in}">back</a>
+    <a class="back-box" th:href="@{/}">back</a>
 </div>
+<div style="height: 3.125rem"></div>
 <hr>
 <h1 style="text-align: center" th:text="${message}"></h1>
 </body>

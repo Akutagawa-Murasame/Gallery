@@ -61,5 +61,6 @@ input:focus {
   display: inline-block;
   height: 3.125rem;
   line-height: 3.125rem;
+  width: 12.5rem;
   text-align: center;
 }

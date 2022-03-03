@@ -27,6 +27,7 @@ public class FileController {
 
     /**
      * 将用户上传的图片按照日期保存在不同的目录下，并将图片的目录存在数据库
+     *
      * @param request 包含多个文件的request
      * @return 重定向到提示信息视图，页面上显示文件上传结果
      */
@@ -34,7 +35,7 @@ public class FileController {
     public String uploadFilesFromHtml(MultipartHttpServletRequest multipartRequest,
                                       HttpServletRequest request) {
 //        首先确认用户是否已经登录，即使拦截器已经拦截了没有登录的访问，但是仍然不能轻易相信别人的代码（指spring）
-        User user = (User)request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("user");
 
         if (user == null) {
             request.setAttribute("error", "please login in first");
@@ -49,7 +50,7 @@ public class FileController {
 //        由于在配置文件中设置了文件上传的最大大小，因此不会收到太多图片
         MultiValueMap<String, MultipartFile> map = multipartRequest.getMultiFileMap();
 
-//        upload-multi-file为html表单中定义的input[type="file"]名称
+//        upload-multi-file为html表单中定义的input[type="file"]的name属性
         List<MultipartFile> list = map.get("upload-multi-file");
 
 //        存储文件路径的临时变量
@@ -61,13 +62,14 @@ public class FileController {
             try {
                 tempFilePath = ImageUtil.upload(file, "images");
 
-                if ("".equals(tempFilePath) || null == tempFilePath) {
-                    throw new IOException("file uploaded is null, success / sum : " + count + " / " + list.size());
+                if (null == tempFilePath) {
+//                    文件表单提交时，会默认上传一个空文件，所以size为1，因此为了显示合理，这里不显示上传数量和总数
+                    throw new IOException("inner server error");
                 } else {
                     if (uploadImageService.insertOne(new Image(user.getId(), new Date(new java.util.Date().getTime()), tempFilePath)) != 0) {
                         ++count;
                     } else {
-                        throw new IOException("server internal error, not your fault, success / sum : " + count + " / " + list.size());
+                        throw new IOException("server internal error, not your fault, success | sum : " + count + " | " + list.size());
                     }
                 }
             } catch (IOException e) {

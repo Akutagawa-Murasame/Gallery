@@ -37,10 +37,9 @@ public class PageController {
 
     /**
      * 提示信息页
-     * 必须携带message参数才能进入该页
      */
     @RequestMapping(value = "/message")
-    public String message(@RequestParam("message") String message) {
+    public String message() {
         return "message";
     }
 }
